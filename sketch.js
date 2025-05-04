@@ -170,7 +170,9 @@ function mousePressed() {
     startY = mouseY;
   }
 }
-
+function touchMoved() {
+  mouseIsPressed();
+}
 function mouseReleased() {
   isDrawing = false; // Stop drawing
 }
