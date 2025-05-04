@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SpongeBob Paint School</title>
+
+  <!-- Link to the custom stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Include the p5.js library (for drawing and interaction) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+
+  <!-- Load base64 sticker images and other assets -->
+  <script src="images.js" defer></script>
+
+  <!-- Main sketch file containing p5.js logic -->
+  <script src="sketch.js" defer></script>
+
+  <!-- Font Awesome for icons used in tool buttons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Main drawing interface; initially hidden until START is clicked -->
+  <main class='not-visible'>
+
+    <!-- Logo displayed at the top of the app -->
+    <img id="logo" src="assets/logo.png" alt="SpongeBob Logo" />
+
+    <!-- Paint app container holding the sidebar and canvas area -->
+    <div id="paint-app">
+
+      <!-- Sidebar containing stickers and tools -->
+      <div id="sidebar">
+        <!-- Section for stickers -->
+        <div class="section-title">STICKER</div>
+
+        <!-- Draggable sticker images (snail and SpongeBob) -->
+        <img src="assets/snail.png" class="sticker" id="snail" draggable="true" title="drag to canvas"/>
+        <img src="assets/spongebob 2.png" class="sticker" id="sb1" draggable="true" title="drag to canvas" />
+
+        <!-- Section for drawing tools -->
+        <div class="section-title">TOOLS</div>
+        <div id="tools">
+
+          <!-- Color picker button and hidden input for actual color selection -->
+          <button class="tool-btn" data-tool="colorpicker" title="color picker">
+            <i class="fa fa-eyedropper"></i>
+          </button>
+          <input type="color" id="hidden-color-picker" style="display: none;" />
+
+          <!-- Tool buttons: each one sets a different drawing mode -->
+          <button class="tool-btn active" data-tool="pen" title="Pen"><i class="fas fa-pen"></i></button>
+          <button class="tool-btn" data-tool="brush" title="Brush"><i class="fas fa-brush"></i></button>
+          <button class="tool-btn" data-tool="line" title="Line"><i class="fas fa-ruler-horizontal"></i></button>
+          <button class="tool-btn" data-tool="spray" title="Spray"><i class="fas fa-spray-can-sparkles"></i></button>
+          <button class="tool-btn" data-tool="rectangle" title="Rectangle"><i class="far fa-square"></i></button>
+          <button class="tool-btn" data-tool="bucket" title="Bucket Fill"><i class="fas fa-fill-drip"></i></button>
+          <button class="tool-btn" data-tool="eraser" title="Eraser"><i class="fas fa-eraser"></i></button>
+          <button class="tool-btn" data-tool="calligraphy" title="Calligraphy"><i class="fas fa-feather-alt"></i></button>
+          <button class="tool-btn" data-tool="pixel" title="Pixel Brush"><i class="fas fa-paint-brush"></i></button>
+
+        </div>
+        <div id="size-control">
+          <label for="tool-size">Tool Size: <span id="tool-size-display">10</span></label>
+          <input type="range" id="tool-size" min="1" max="50" value="10">
+                  </div>
+        
+      </div>
+
+      <!-- Canvas holder where the p5 canvas is drawn -->
+      <div id="canvas-holder">
+        <!-- Canvas will be injected by p5.js into this div -->
+        <!-- Another draggable sticker embedded here -->
+        <img src="assets/spongebob 1.png" class="sticker" id="sb2" draggable="true" />
+      </div>
+    </div>
+
+    <!-- Control buttons below the canvas -->
+    <div id="controls">
+      <!-- Save/download the canvas as an image -->
+      <button onclick="saveCanvas()">DOWNLOAD</button>
+
+      <!-- Clear the canvas and stickers -->
+      <button id="clear" onclick="clearCanvas()">CLEAR</button>
+    </div>
+  </main>
+
+  <!-- Intro screen shown on page load -->
+  <div id="intro-screen" class="visible">
+    <!-- Logo and start button to enter the drawing interface -->
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <button id="start-btn">START CLASS</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+/* Base body styling */
+body {
+  margin: 0; /* Remove default body margin */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, playful font */
+  background-color: #70d1f4; /* Fallback background color (in case image fails to load) */
+  background: url('assets/background 2.jpg') no-repeat center; /* Background image centered */
+  background-size: cover; /* Ensure image covers entire viewport */
+  /* overflow:hidden; */
+}
+
+/* Main drawing interface container */
+main {
+  /* display: flex;  Uncomment for flex layout if needed */
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Make sure it fills the full height of the viewport */
+  height: 100vh;
+  max-width: 800px; /* Limit max width for better readability/layout */
+  margin: auto; /* Center horizontally */
+
+}
+
+/* Logo image at the top of the app */
+#logo {
+  width: 250px; /* Set logo width */
+}
+
+/* Wrapper for sidebar and canvas area */
+#paint-app {
+  display: flex; /* Arrange sidebar and canvas horizontally */
+  position: relative; /* Needed so children (e.g., stickers) can be absolutely positioned */
+}
+
+/* Sidebar container with tools and stickers */
+#sidebar {
+  width: 150px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Section headers inside sidebar (e.g., STICKER, TOOLS) */
+.section-title {
+  font-weight: bold;
+  text-align: center; /* Center-align text */
+}
+
+/* Sticker images (draggable) */
+.sticker {
+  width: 60px;
+  cursor: grab; /* Hand icon when hovering to indicate draggable */
+}
+
+/* Tools grid layout */
+#tools {
+  display: grid;
+  grid-template-columns: repeat(2, 40px); /* 2 equal columns of 40px */
+  /* gap: 8px; Spacing between tool buttons */
+  justify-content: space-around;
+  padding: 10px;
+}
+
+/* General tool button styling */
+.tool-btn {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: inherit; /* Transparent background */
+  border: none;
+  border-radius: 6px; /* Rounded corners */
+  transition: background-color 0.2s ease; /* Smooth hover transition */
+}
+
+/* Tool button hover effect */
+.tool-btn:hover {
+  background-color: #e0e0e0; /* Light gray background on hover */
+}
+
+/* Active tool (selected) style */
+.tool-btn.active {
+  background-color: #ffe26a; /* Yellow background for selected tool */
+  border-color: #d4b830; /* Optional border color if needed */
+}
+
+/* Container for canvas action buttons */
+#controls {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row; /* Align buttons horizontally */
+  width: 100%;
+  padding-left: 5%; /* Add spacing on left */
+}
+
+/* Styling for all buttons in the controls area */
+#controls button {
+  margin-bottom: 5px;
+  margin-left: 5px;
+  padding: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+}
+
+/* Red text for the "Clear" button to indicate caution */
+#clear {
+  color: red;
+}
+
+/* Canvas container */
+#canvas-holder {
+  margin-left: 20px;
+  position: relative; /* Needed for absolutely placed stickers */
+}
+
+/* A specific sticker placed over the canvas */
+#sb2 {
+  position: absolute;
+  bottom: -20%; /* Move below canvas */
+  right: -10%; /* Shift right */
+  width: 200px;
+  z-index: 10; /* Bring it above canvas and other elements */
+}
+
+/* Reset margin/padding globally and apply default font */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+/* Intro screen (initial splash screen) */
+#intro-screen {
+  position: relative;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide anything outside */
+  background: url('assets/background 1.jpg') no-repeat center; /* Center background image */
+  background-size: cover; /* Ensure background fills entire screen */
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  transition: all 0.1s linear; /* Smooth transition when hiding/showing */
+}
+
+/* Logo shown in intro screen */
+.logo {
+  width: 250px;
+  margin-bottom: 100px;
+}
+
+/* "Start Class" button styling */
+#start-btn {
+  background-color: #014421; /* Dark green background */
+  color: white;
+  font-size: 24px;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: fit-content; /* Adjust width to content */
+  border: 5px solid white; /* White border for contrast */
+}
+
+/* Hover effect for start button */
+#start-btn:hover {
+  background-color: #026b35; /* Lighter green on hover */
+}
+
+/* Visible class: used to show an element */
+.visible {
+  display: flex;
+  opacity: 100%;
+}
+
+/* Not-visible class: used to hide an element */
+.not-visible {
+  display: none;
+  opacity: 0%;
+}
